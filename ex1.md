@@ -1,3 +1,5 @@
+//CODE BY -----VLAD ZHARKOV Frontend 2 itworks
+
 Which of the following is/are strings?
 c) '4'
 //------------------------------------------------------------------

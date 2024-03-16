@@ -1,3 +1,5 @@
+//CODE BY -----VLAD ZHARKOV Frontend 2 itworks
+
 /*---------TO DO ----------------------------------------------------
 JavaScript – more on data types
 The following exercise contains the following subjects:
@@ -12,6 +14,8 @@ Instructions
 7. Create a variable whose value holds a symbol.
 Console log the types of your variables.
 -------------------------------------------------------------------------*/
+
+//CODE MY -----VLAD ZHARKOV Frontend 2 itworks
 
 // 1. Create a variable whose value holds a string.
 let stringValue = "This is a string";

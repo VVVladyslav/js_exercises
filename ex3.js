@@ -1,3 +1,5 @@
+//CODE BY -----VLAD ZHARKOV Frontend 2 itworks
+
 /*---------TO DO ----------------------------------------------------
 JavaScript – functions
 The following exercise contains the following subjects:
@@ -13,9 +15,6 @@ format:
 ‘You will be a programmer in New York married to Rana
 with 2 children’.
 -------------------------------------------------------------------------*/
-
-//CODE MY ------------------------------------------------------------------
-/*-------------------------------------------------------------------------*/
 
 // Write a function named `tellFortune` that takes 4 parameters: jobTitle, location, partnerName, numberOfChildren.
 // Based on this input, the function returns a string with this format: ‘You will be a programmer in New York married to Rana with 2 children’.

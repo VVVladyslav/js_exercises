@@ -1,3 +1,5 @@
+//CODE BY -----VLAD ZHARKOV Frontend 2 itworks
+
 /*---------TO DO ----------------------------------------------------
 JavaScript – functions
 The following exercise contains the following subjects:

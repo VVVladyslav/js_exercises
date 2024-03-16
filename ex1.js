@@ -1,3 +1,5 @@
+//CODE BY -----VLAD ZHARKOV Frontend 2 itworks
+
 //create three different ways to declare variables
 let x = 10;
 var y = "Hello";
