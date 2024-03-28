@@ -8,6 +8,5 @@
 
 -------------------------------------------------------------------------*/
 
-//ex.js
-
-//https://www.programiz.com/javascript/online-compiler/
+//ex17.js
+//ex16.js

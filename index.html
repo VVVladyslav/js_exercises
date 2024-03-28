@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шахматная доска</title>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  .cell {
+    width: 100px; /* Размер клетки */
+    height: 100px; /* Размер клетки */
+    border: 1px solid black;
+    text-align: center;
+    line-height: 100px;
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <input type="text" id="cellIdInput" class="form-control" placeholder="Введите ID клетки">
+    </div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary" onclick="updateCell()">Обновить клетку</button>
+    </div>
+  </div>
+  
+  <div class="row mb-3">
+    <div class="col">
+      <input type="text" id="hoveredCellId" class="form-control" placeholder="ID клетки над которой мышь">
+    </div>
+  </div>
+
+  <div id="board"></div>
+  
+  <div class="row mt-5">
+    <div class="col">
+      <h2>Значения массива boardData:</h2>
+      <ul id="boardDataList"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  const numRows = 3; // Количество строк
+  const numCols = 3; // Количество столбцов
+  //let cellStatus = {}; // Объект для хранения состояний ячеек
+  
+  // Ручное заполнение массива cellStatus
+	const boardData = [
+	  { id: 'A1', imageId: 1, extraId: true },
+	  { id: 'A2', imageId: 2, extraId: true },
+	  { id: 'A3', imageId: 3, extraId: true },
+	  { id: 'B1', imageId: 4, extraId: true },
+	  { id: 'B2', imageId: 5, extraId: true },
+	  { id: 'B3', imageId: 6, extraId: true },
+	  { id: 'C1', imageId: 7, extraId: true },
+	  { id: 'C2', imageId: 8, extraId: true },
+	  { id: 'C3', imageId: 9, extraId: true }
+	];
+
+	console.log(boardData);
+
+  
+
+  // Заполнение массива данных о клетках
+  /*
+  const boardData = [];
+  for (let row = 0; row < numRows; row++) {
+    const rowContainer = document.createElement('div');
+    rowContainer.classList.add('row');
+    for (let col = 0; col < numCols; col++) {
+      const cellId = String.fromCharCode(65 + row) + (col + 1) + String.fromCharCode(65 + row) + (col + 1);
+      const imageId = Math.floor(Math.random() * 10) + 1;
+      const extraId = Math.random() >= 0.5; // Инициализация случайного значения
+      
+	  const cell = document.createElement('div');
+      cell.classList.add('col', 'cell');
+      cell.textContent = cellId;
+      cell.setAttribute('id', cellId); // Установка атрибута id
+      cell.style.background = 'white'; // Установка белого фона
+      rowContainer.appendChild(cell);
+	  
+      boardData.push({ id: cellId, imageId: imageId, extraId: extraId });
+      cellStatus[cellId] = extraId; // Запись значения в объект состояний
+    }
+    document.getElementById('board').appendChild(rowContainer);
+  }
+  */
+  
+  // Функция для создания игрового поля на основе данных из массива boardData
+	function createGameBoard() {
+	  const boardContainer = document.getElementById('board');
+		let row = 1;
+		let col = 1;
+		let rowContainer;
+		//const rowContainer = document.createElement('div');
+		//rowContainer.classList.add('row');
+	  boardData.forEach(cellData => {
+	  
+		  console.log('cellData.id = ' + cellData.id);
+		  
+		  console.log('col === ' + col);
+		  console.log('row === ' + row);
+		
+			if(col === 1){
+				rowContainer = document.createElement('div');
+				rowContainer.classList.add('row');
+				//row++;
+				
+				console.log('========================================');
+				
+				const cell = document.createElement('div');
+				cell.classList.add('col', 'cell');
+				cell.textContent = cellData.id;
+				cell.setAttribute('id', cellData.id); // Установка атрибута id
+				cell.style.background = 'white'; // Установка белого фона
+				rowContainer.appendChild(cell);
+				col++;
+				
+				
+				
+			}
+			
+			else{
+				if(col === 4){
+					document.getElementById('board').appendChild(rowContainer);
+					row++;
+					col = 1;
+					
+					console.log('col === 1');
+					console.log('========================================');
+					
+					rowContainer = document.createElement('div');
+					rowContainer.classList.add('row');
+					
+					const cell = document.createElement('div');
+					cell.classList.add('col', 'cell');
+					cell.textContent = cellData.id;
+					cell.setAttribute('id', cellData.id); // Установка атрибута id
+					cell.style.background = 'white'; // Установка белого фона
+					rowContainer.appendChild(cell);
+					col++;
+				}
+				else{
+					const cell = document.createElement('div');
+					cell.classList.add('col', 'cell');
+					cell.textContent = cellData.id;
+					cell.setAttribute('id', cellData.id); // Установка атрибута id
+					cell.style.background = 'white'; // Установка белого фона
+					rowContainer.appendChild(cell);
+					col++;
+				}
+			}
+		
+	  });
+	  document.getElementById('board').appendChild(rowContainer);
+	}
+
+	// Вызов функции для создания игрового поля
+	createGameBoard();
+  
+  // Функция обновления клетки
+  function updateCell() {
+    const cellId = document.getElementById('cellIdInput').value;
+    const cellData = boardData.find(cell => cell.id === cellId);
+    if (cellData) {
+      cellData.imageId = 10; // Установка нового значения imageId
+      const cellElement = document.getElementById(cellId);
+      if (cellElement) {
+        cellElement.textContent = '00'; // Изменение содержимого клетки
+      }
+    } else {
+      alert('Клетка с указанным ID не найдена!');
+    }
+  }
+  
+  // Обработчик события mousemove
+  document.addEventListener('mousemove', function(event) {
+    const hoveredCellId = document.getElementById('hoveredCellId');
+    const target = event.target;
+    if (target.classList.contains('cell')) {
+      hoveredCellId.value = target.id;
+    }
+  });
+  
+  // Обработчик события click
+  /*
+  document.addEventListener('click', function(event) {
+    const target = event.target;
+    if (target.classList.contains('cell')) {
+      const cellId = target.id;
+      const cellElement = document.getElementById(cellId);
+      if (cellElement) {
+	  
+		boardData.find(cell => cell.id === 'B2').imageId = boardData.find(cell => cell.id === 'B2').imageId ++;
+		
+		console.log('cellData.id = ' + boardData.find(cell => cell.id === 'B2').imageId);
+	  
+        //--boardData[cellId] = !cellStatus[cellId]; // Инвертирование значения
+        //--cellElement.style.fontWeight = cellStatus[cellId] ? 'bold' : 'normal'; // Изменение стиля текста
+        updateBoardDataList(); // Обновление вывода значений массива boardData
+      }
+    }
+  });*/
+  
+  // Обработчик события click
+document.addEventListener('click', function(event) {
+  const target = event.target;
+  if (target.classList.contains('cell')) {
+    const cellId = target.id;
+    const cellElement = document.getElementById(cellId);
+    if (cellElement) {
+      boardData.find(cell => cell.id === cellId).imageId++; // Увеличение imageId на 1
+      console.log(`imageId для ячейки с id ${cellId}: ${boardData.find(cell => cell.id === cellId).imageId}`);
+      updateBoardDataList(); // Обновление вывода значений массива boardData
+    }
+  }
+});
+  
+  // Функция обновления списка значений массива boardData
+  function updateBoardDataList() {
+    const boardDataList = document.getElementById('boardDataList');
+    boardDataList.innerHTML = ''; // Очистка списка
+    boardData.forEach(item => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `ID: ${item.id}, Image ID: ${item.imageId}, Extra ID: ${item.extraId}`;
+      boardDataList.appendChild(listItem);
+    });
+  }
+  
+  // Инициализация списка значений массива boardData при загрузке страницы
+  updateBoardDataList();
+</script>
+</body>
+</html>
