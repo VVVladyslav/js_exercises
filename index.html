@@ -7,12 +7,16 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 <style>
   .cell {
-    width: 100px; /* Размер клетки */
-    height: 100px; /* Размер клетки */
+    width: 70px; /* Размер клетки */
+    height: 70px; /* Размер клетки */
     border: 1px solid black;
     text-align: center;
-    line-height: 100px;
-    font-size: 24px;
+    line-height: 70px;
+    font-size: 14px;
+    flex: 0 0 70px; /* Добавленная строка */
+  }
+  .red-text {
+    color: red; /* Устанавливаем красный цвет текста */
   }
 </style>
 </head>
@@ -41,7 +45,7 @@
   <div class="row mt-5">
     <div class="col">
       <h2>Значения массива boardData:</h2>
-      Меняется если нажимать на А1.... С3...
+      <h1 class="red-text">Меняется если нажимать на А1.... С3...</h1>
       <br>
       <br>
       <h2>-------</h2>
@@ -56,7 +60,7 @@
   //let cellStatus = {}; // Объект для хранения состояний ячеек
   
   // Ручное заполнение массива cellStatus
-	const boardData = [
+	const boardData1 = [
 	  { id: 'A1', imageId: 1, extraId: true },
 	  { id: 'A2', imageId: 2, extraId: true },
 	  { id: 'A3', imageId: 3, extraId: true },
@@ -67,6 +71,64 @@
 	  { id: 'C2', imageId: 8, extraId: true },
 	  { id: 'C3', imageId: 9, extraId: true }
 	];
+
+  const boardData = [
+  { id: 'A1', imageId: 1, extraId: true },
+  { id: 'A2', imageId: 2, extraId: true },
+  { id: 'A3', imageId: 3, extraId: true },
+  { id: 'A4', imageId: 4, extraId: true },
+  { id: 'A5', imageId: 5, extraId: true },
+  { id: 'A6', imageId: 6, extraId: true },
+  { id: 'A7', imageId: 7, extraId: true },
+  { id: 'A8', imageId: 8, extraId: true },
+  { id: 'A9', imageId: 9, extraId: true },
+  { id: 'A10', imageId: 10, extraId: true },
+  { id: 'A11', imageId: 11, extraId: true },
+  { id: 'A12', imageId: 12, extraId: true },
+  { id: 'A13', imageId: 13, extraId: true },
+  { id: 'A14', imageId: 14, extraId: true },
+  { id: 'A15', imageId: 15, extraId: true },
+  { id: 'A16', imageId: 16, extraId: true },
+
+
+
+  { id: 'B1', imageId: 26, extraId: true },
+  { id: 'B2', imageId: 27, extraId: true },
+  { id: 'B3', imageId: 28, extraId: true },
+  { id: 'B4', imageId: 29, extraId: true },
+  { id: 'B5', imageId: 30, extraId: true },
+  { id: 'B6', imageId: 31, extraId: true },
+  { id: 'B7', imageId: 32, extraId: true },
+  { id: 'B8', imageId: 33, extraId: true },
+  { id: 'B9', imageId: 34, extraId: true },
+  { id: 'B10', imageId: 35, extraId: true },
+  { id: 'B11', imageId: 36, extraId: true },
+  { id: 'B12', imageId: 37, extraId: true },
+  { id: 'B13', imageId: 38, extraId: true },
+  { id: 'B14', imageId: 39, extraId: true },
+  { id: 'B15', imageId: 40, extraId: true },
+  { id: 'B16', imageId: 41, extraId: true },
+
+
+  // Продолжение для строки C
+  { id: 'C1', imageId: 51, extraId: true },
+  { id: 'C2', imageId: 52, extraId: true },
+  { id: 'C3', imageId: 53, extraId: true },
+  { id: 'C4', imageId: 54, extraId: true },
+  { id: 'C5', imageId: 55, extraId: true },
+  { id: 'C6', imageId: 56, extraId: true },
+  { id: 'C7', imageId: 57, extraId: true },
+  { id: 'C8', imageId: 58, extraId: true },
+  { id: 'C9', imageId: 59, extraId: true },
+  { id: 'C10', imageId: 60, extraId: true },
+  { id: 'C11', imageId: 61, extraId: true },
+  { id: 'C12', imageId: 62, extraId: true },
+  { id: 'C13', imageId: 63, extraId: true },
+  { id: 'C14', imageId: 64, extraId: true },
+  { id: 'C15', imageId: 65, extraId: true },
+  { id: 'C16', imageId: 66, extraId: true }
+];
+
 
 	console.log(boardData);
 
@@ -132,7 +194,7 @@
 			}
 			
 			else{
-				if(col === 4){
+				if(col === 17){
 					document.getElementById('board').appendChild(rowContainer);
 					row++;
 					col = 1;
